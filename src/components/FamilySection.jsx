@@ -110,9 +110,12 @@ export default function FamilySection({ data, assets }) {
                         {member.name}
                       </span>
                       {member.phone && (
-                        <span className="text-light text-[1rem] md:text-[1.1rem] mt-2 font-body block opacity-90">
+                        <a 
+                          href={`tel:${member.phone.replace(/\s/g, '')}`}
+                          className="text-light text-[1rem] md:text-[1.1rem] mt-2 font-body block opacity-90 hover:opacity-100 transition-opacity"
+                        >
                           {member.phone}
-                        </span>
+                        </a>
                       )}
                     </div>
                   </div>
@@ -122,9 +125,12 @@ export default function FamilySection({ data, assets }) {
                       {member.name}
                     </span>
                     {member.phone && (
-                      <span className="text-light text-[1.1rem] md:text-[1.2rem] mt-2 font-body block opacity-90">
+                      <a 
+                        href={`tel:${member.phone.replace(/\s/g, '')}`}
+                        className="text-light text-[1.1rem] md:text-[1.2rem] mt-2 font-body block opacity-90 hover:opacity-100 transition-opacity"
+                      >
                         {member.phone}
-                      </span>
+                      </a>
                     )}
                   </div>
                 )}
