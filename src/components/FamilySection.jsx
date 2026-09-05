@@ -86,15 +86,11 @@ export default function FamilySection({ data, assets }) {
 
       {/* ── Family Cards Container ── */}
       <div className="relative z-10 max-w-[1080px] mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8 max-w-[320px] sm:max-w-[680px] lg:max-w-[1040px] mx-auto justify-items-center">
-          {data.members.map((member, index) => {
-            const isFourthOnDesktop = index === 3;
-            return (
+        <div className="flex flex-wrap justify-center gap-7 md:gap-8 mx-auto">
+          {data.members.map((member) => (
               <div
                 key={member.name}
-                className={`w-full max-w-[300px] transition-all duration-400 ease-out ${
-                  isFourthOnDesktop ? 'lg:col-start-2' : ''
-                }`}
+                className="w-full max-w-[300px] transition-all duration-400 ease-out"
               >
                 {member.image ? (
                   <div className="family-card rounded-[16px] overflow-hidden transition-all duration-300 ease-out hover:scale-[1.02]">
@@ -123,8 +119,7 @@ export default function FamilySection({ data, assets }) {
                   </div>
                 )}
               </div>
-            );
-          })}
+            ))}
         </div>
       </div>
 
