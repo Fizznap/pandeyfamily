@@ -1,0 +1,592 @@
+@import "tailwindcss";
+
+/* =============================================
+   GANPATI INVITATION – DESIGN TOKENS
+   =============================================
+   To re-theme: change values in @theme.
+   To switch themes: wrap App in .theme-green or .theme-pink
+   ============================================= */
+@theme {
+  /* — Primary Palette (Orange) — */
+  --color-primary: #e8913a;
+  --color-primary-light: #f58d30;
+  --color-primary-dark: #d47828;
+  --color-primary-deep: #c95a10;
+  --color-primary-darker: #b84d0c;
+
+  /* — Accent Palette (Gold) — */
+  --color-accent: #d4a95d;
+  --color-accent-light: #f3d28a;
+  --color-accent-dark: #b07d30;
+  --color-accent-text: #a66a15;
+  --color-accent-glow: #ffe4a6;
+  --color-accent-pale: #f6d38b;
+  --color-accent-border: #e3c47a;
+
+  /* — Surface Palette (Cream / Ivory) — */
+  --color-surface: #f8f1e5;
+  --color-surface-light: #fff9f0;
+  --color-surface-bright: #fffdfa;
+  --color-surface-alt: #f7f0e4;
+  --color-surface-mid: #f3e7d3;
+  --color-surface-warm: #fce8cc;
+  --color-surface-card: #fff6e8;
+  --color-surface-highlight: #fff4d9;
+  --color-surface-placeholder: #eedfc8;
+
+  /* — Text — */
+  --color-heading: #593825;
+  --color-body: #6a4b35;
+  --color-muted: #7a5a45;
+  --color-light: #fff8ef;
+  --color-warm: #b88630;
+
+  /* — Card Warm (Timeline) — */
+  --color-card-warm: #f5c98a;
+  --color-card-warm-dark: #efb56d;
+
+  /* — Semantic Font Families — */
+  --font-family-heading: 'Noto Serif Devanagari', serif;
+  --font-family-body: 'Asar', serif;
+  --font-family-display: 'Tiro Devanagari Marathi', 'Noto Serif Devanagari', serif;
+
+  /* — Border Radius — */
+  --radius-xl: 32px;
+  --radius-lg: 24px;
+  --radius-md: 18px;
+  --radius-pill: 999px;
+
+  /* — Animations — */
+  --animate-arrow-float: arrowFloat 2s ease-in-out infinite;
+  --animate-music-pulse: musicPulse 2s ease-in-out infinite;
+  --animate-note-dance: noteDance 2s ease-in-out infinite;
+  --animate-ring-rotate: ringRotate 40s linear infinite;
+  --animate-ring-reverse: ringRotateReverse 60s linear infinite;
+  --animate-seal-shine: sealShine 4s linear infinite;
+  --animate-seal-breath: sealBreath 3.5s ease-in-out infinite;
+  --animate-pulse-star: pulseStar 2s infinite;
+}
+
+/* =============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================= */
+*,
+button,
+a,
+div {
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-surface);
+  min-height: 100vh;
+  color: var(--color-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  font-family: var(--font-family-body);
+  font-weight: 500;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =============================================
+   GRADIENT CLASSES
+   ============================================= */
+
+/* ── Hero ── */
+.gradient-hero {
+  background:
+    radial-gradient(circle at 50% 20%, #ffffffbd 0%, #ffffff2e 18%, transparent 44%),
+    linear-gradient(var(--color-surface) 0%, var(--color-surface-mid) 48%, var(--color-surface-alt) 100%);
+}
+
+.gradient-hero-texture {
+  background:
+    radial-gradient(circle at 25% 18%, #ffffff8c 0%, transparent 22%),
+    radial-gradient(circle at 78% 30%, #ffffff3d 0%, transparent 18%),
+    radial-gradient(circle at 50% 60%, color-mix(in srgb, var(--color-accent) 6%, transparent) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--color-accent-dark) 2%, transparent) 0 1px, transparent 1px 7px);
+}
+
+.gradient-hero-stripe {
+  background: linear-gradient(90deg, transparent 0%, #ffffff14 50%, transparent 100%);
+}
+
+/* ── Family ── */
+.gradient-family {
+  background: radial-gradient(circle, var(--color-primary-light), var(--color-primary-deep));
+}
+
+/* ── Timeline ── */
+.gradient-timeline-line {
+  background: linear-gradient(var(--color-accent-light), var(--color-accent));
+}
+
+/* ── Location ── */
+.gradient-location {
+  background: linear-gradient(175deg,
+    color-mix(in srgb, var(--color-surface-warm) 80%, white) 0%,
+    var(--color-surface-warm) 35%,
+    color-mix(in srgb, var(--color-surface-warm) 90%, var(--color-primary-light)) 65%,
+    color-mix(in srgb, var(--color-surface-warm) 80%, var(--color-primary-light)) 100%
+  );
+}
+
+.gradient-location-glass {
+  backdrop-filter: blur(6px);
+  background: linear-gradient(
+    color-mix(in srgb, var(--color-surface-card) 65%, transparent) 0%,
+    color-mix(in srgb, var(--color-surface-warm) 45%, transparent) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--color-primary) 18%, transparent);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--color-accent) 10%, transparent),
+              inset 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.gradient-location-card {
+  background: linear-gradient(var(--color-surface-card) 0%, color-mix(in srgb, var(--color-surface-card) 90%, var(--color-surface-warm)) 50%, var(--color-surface-warm) 100%);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--color-primary-dark) 12%, transparent),
+              0 4px 12px color-mix(in srgb, var(--color-primary-dark) 6%, transparent);
+}
+
+.gradient-location-map {
+  background: linear-gradient(var(--color-accent-border), var(--color-accent));
+  border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 15%, transparent);
+}
+
+.gradient-location-fade {
+  background: linear-gradient(color-mix(in srgb, var(--color-primary) 14%, transparent), transparent);
+}
+
+/* ── Blessings Card ── */
+.gradient-blessing {
+  background: linear-gradient(var(--color-primary-dark) 0%, var(--color-primary-deep) 100%);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 15%, transparent);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+}
+
+.gradient-blessing-glow {
+  background: radial-gradient(color-mix(in srgb, var(--color-accent-glow) 35%, transparent), transparent 70%);
+}
+
+/* ── Footer ── */
+.gradient-footer {
+  background: linear-gradient(
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 20%,
+    var(--color-primary-deep) 60%,
+    var(--color-primary-darker) 100%
+  );
+}
+
+.gradient-footer-fade {
+  background: linear-gradient(var(--color-surface) 0%, transparent 100%);
+}
+
+/* ── Date Strip (Plaque) ── */
+.gradient-date-inner {
+  background: radial-gradient(ellipse at center, #ffffffbb 0%, #ffffff33 100%);
+}
+
+/* =============================================
+   COMPONENT CLASSES
+   ============================================= */
+
+/* ── CTA Button ── */
+.cta-button {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--color-primary-dark) 28%, transparent);
+  transition: all 0.3s;
+}
+
+.cta-button:hover {
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--color-primary-dark) 38%, transparent);
+  transform: translateY(-2px);
+}
+
+/* ── Music Button ── */
+.music-btn-playing {
+  background: linear-gradient(to bottom right, var(--color-accent-border), var(--color-accent), var(--color-accent-dark));
+  border-color: var(--color-accent-border);
+  color: var(--color-surface-light);
+  animation: musicPulse 2s ease-in-out infinite;
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--color-accent) 35%, transparent),
+              0 0 20px color-mix(in srgb, var(--color-accent-border) 25%, transparent);
+}
+
+.music-btn-paused {
+  background: color-mix(in srgb, var(--color-surface-light) 92%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent) 18%, transparent);
+  color: var(--color-primary);
+  box-shadow: 0 10px 18px color-mix(in srgb, var(--color-heading) 10%, transparent),
+              inset 0 1px rgba(255, 255, 255, 0.9);
+}
+
+.music-note-active {
+  color: white;
+  animation: noteDance 2s ease-in-out infinite;
+  transform: scale(1.1);
+}
+
+/* ── Opener Curtain ── */
+.curtain-panel {
+  background-color: var(--color-surface);
+  background-blend-mode: multiply;
+  background-image: url('/assets/paper-texture.webp');
+  background-size: 300px;
+  will-change: transform;
+  transition: transform 1.3s cubic-bezier(0.76, 0, 0.24, 1) 0.1s;
+}
+
+.curtain-panel-left {
+  box-shadow: inset 0 0 100px color-mix(in srgb, var(--color-heading) 2%, transparent),
+              -2px 0 20px rgba(0, 0, 0, 0.1),
+              -1px 0 6px rgba(0, 0, 0, 0.2);
+  border-right: 3px solid var(--color-accent);
+}
+
+.curtain-panel-right {
+  box-shadow: inset 0 0 100px color-mix(in srgb, var(--color-heading) 2%, transparent),
+              2px 0 20px rgba(0, 0, 0, 0.1),
+              1px 0 6px rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--color-accent);
+}
+
+.curtain-open-left {
+  transform: translateX(-100%);
+}
+
+.curtain-open-right {
+  transform: translateX(100%);
+}
+
+.curtain-line-gold {
+  background: linear-gradient(180deg, transparent 0%, var(--color-accent) 15%, var(--color-accent-dark) 50%, var(--color-accent) 85%, transparent 100%);
+}
+
+.curtain-line-orange {
+  background: linear-gradient(180deg, transparent 0%, var(--color-primary) 20%, var(--color-primary-dark) 50%, var(--color-primary) 80%, transparent 100%);
+}
+
+/* ── Seal Button (Opener) ── */
+.gradient-seal {
+  background: radial-gradient(ellipse at 30% 20%, var(--color-accent) 0%, var(--color-accent-dark) 35%, var(--color-accent) 65%, var(--color-accent-dark) 100%);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 80px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.35);
+}
+
+.seal-shine {
+  background: conic-gradient(transparent 0deg 140deg, rgba(255, 255, 255, 0.28) 170deg, rgba(255, 255, 255, 0.45) 180deg, rgba(255, 255, 255, 0.28) 190deg, transparent 220deg 360deg);
+  animation: sealShine 4s linear infinite;
+  -webkit-mask-image: radial-gradient(circle, transparent 55%, black 70% 100%);
+}
+
+/* ── Plaque (Date Strip in Hero) ── */
+.plaque {
+  background-color: var(--color-surface-bright);
+  background-image: url('/assets/paper-texture.webp');
+  background-size: 200px;
+  background-blend-mode: multiply;
+  border: 1px solid var(--color-accent-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--color-heading) 12%, transparent),
+              inset 0 0 10px color-mix(in srgb, var(--color-accent) 15%, transparent);
+}
+
+.plaque-inner {
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+}
+
+/* ── Family Card ── */
+.family-card {
+  background: var(--color-surface);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-out;
+}
+
+.family-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Family Plaque ── */
+.family-plaque {
+  background: var(--color-surface);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 25%, transparent);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1), 0 2px 10px color-mix(in srgb, var(--color-accent) 8%, transparent);
+}
+
+/* ── Timeline Scalloped Cards ── */
+.card-scallop-light {
+  background:
+    radial-gradient(circle at 0 0, transparent 24px, var(--color-surface-light) calc(24px + 0.5px)) 0 0,
+    radial-gradient(circle at 100% 0, transparent 24px, var(--color-surface-light) calc(24px + 0.5px)) 100% 0,
+    radial-gradient(circle at 0 100%, transparent 24px, var(--color-surface-light) calc(24px + 0.5px)) 0 100%,
+    radial-gradient(circle at 100% 100%, transparent 24px, var(--color-surface-light) calc(24px + 0.5px)) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 51% 51%;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08));
+}
+
+.card-scallop-warm {
+  background:
+    radial-gradient(circle at 0 0, transparent 24px, var(--color-card-warm) calc(24px + 0.5px)) 0 0,
+    radial-gradient(circle at 100% 0, transparent 24px, var(--color-card-warm) calc(24px + 0.5px)) 100% 0,
+    radial-gradient(circle at 0 100%, transparent 24px, var(--color-card-warm-dark) calc(24px + 0.5px)) 0 100%,
+    radial-gradient(circle at 100% 100%, transparent 24px, var(--color-card-warm-dark) calc(24px + 0.5px)) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 51% 51%;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.08));
+}
+
+.timeline-icon {
+  background: var(--color-surface-highlight);
+  border: 2px solid var(--color-accent-border);
+}
+
+/* ── Gallery Cards ── */
+.gallery-card {
+  background: var(--color-surface-light);
+  border-radius: 18px 28px 20px 24px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s;
+}
+
+.gallery-card-left {
+  transform: rotate(-2deg);
+}
+
+.gallery-card-left:hover {
+  transform: translateY(-6px) scale(1.02) rotate(-2deg);
+}
+
+.gallery-card-right {
+  transform: rotate(2deg);
+}
+
+.gallery-card-right:hover {
+  transform: translateY(-6px) scale(1.02) rotate(2deg);
+}
+
+/* ── Map Iframe ── */
+.map-filter {
+  border: 0;
+  filter: grayscale(40%) saturate(0.9) brightness(1.03) contrast(1.02);
+}
+
+/* ── Drop Shadows ── */
+.drop-shadow-soft {
+  filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--color-heading) 8%, transparent));
+}
+
+.drop-shadow-ornament {
+  filter: drop-shadow(0 10px 16px color-mix(in srgb, var(--color-heading) 10%, transparent));
+}
+
+.drop-shadow-murti {
+  filter: drop-shadow(0 18px 24px color-mix(in srgb, var(--color-primary-deep) 16%, transparent));
+}
+
+/* ── Text Shadows ── */
+.text-shadow-glow {
+  text-shadow: 0 1px color-mix(in srgb, white 42%, transparent);
+}
+
+.text-shadow-light {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.text-shadow-dark {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.text-shadow-soft {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Paper Texture Overlay ── */
+.paper-texture-overlay {
+  background-image: url('/assets/paper-texture.webp');
+  background-size: cover;
+}
+
+/* ── Fluid Typography ── */
+.text-fluid-xs {
+  font-size: clamp(0.55rem, 2vw, 0.68rem);
+}
+
+.text-fluid-sm {
+  font-size: clamp(0.85rem, 2.8vw, 1rem);
+}
+
+.text-fluid-base {
+  font-size: clamp(1rem, 4vw, 1.1rem);
+}
+
+.text-fluid-md {
+  font-size: clamp(1.02rem, 4.2vw, 1.18rem);
+}
+
+.text-fluid-lg {
+  font-size: clamp(1rem, 4.6vw, 1.25rem);
+}
+
+.text-fluid-seal {
+  font-size: clamp(0.95rem, 3.5vw, 1.12rem);
+}
+
+/* =============================================
+   KEYFRAME ANIMATIONS
+   ============================================= */
+@keyframes arrowFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@keyframes musicPulse {
+  0%   { transform: scale(1.05); box-shadow: 0 8px 24px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 20px color-mix(in srgb, var(--color-accent-border) 25%, transparent); }
+  50%  { transform: scale(1.1);  box-shadow: 0 12px 30px color-mix(in srgb, var(--color-accent) 50%, transparent), 0 0 28px color-mix(in srgb, var(--color-accent-border) 40%, transparent); }
+  100% { transform: scale(1.05); box-shadow: 0 8px 24px color-mix(in srgb, var(--color-accent) 35%, transparent), 0 0 20px color-mix(in srgb, var(--color-accent-border) 25%, transparent); }
+}
+
+@keyframes noteDance {
+  0%, 100% { transform: translateY(-1px) scale(1.1); }
+  25%      { transform: translateY(-3px) scale(1.1) rotate(-5deg); }
+  75%      { transform: translateY(1px) scale(1.1) rotate(5deg); }
+}
+
+@keyframes ringRotate {
+  0%   { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ringRotateReverse {
+  0%   { transform: rotate(0); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes sealShine {
+  0%   { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes sealBreath {
+  0%, 100% { box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 80px rgba(0, 0, 0, 0.3), inset 0 2px 6px rgba(255, 255, 255, 0.35); }
+  50%      { box-shadow: 0 0 50px rgba(0, 0, 0, 0.25), 0 0 100px rgba(0, 0, 0, 0.4), inset 0 2px 6px rgba(255, 255, 255, 0.4); }
+}
+
+@keyframes pulseStar {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* =============================================
+   THEME VARIANTS
+   =============================================
+   Switch themes by wrapping App:
+     <div className="theme-green"> or
+     <div className="theme-pink">
+   ============================================= */
+
+/* ── Green / Forest Theme ── */
+.theme-green {
+  --color-primary: #2d8a4e;
+  --color-primary-light: #3da862;
+  --color-primary-dark: #1e6b3a;
+  --color-primary-deep: #166534;
+  --color-primary-darker: #0f4925;
+
+  --color-accent: #c9a84c;
+  --color-accent-light: #e8d28a;
+  --color-accent-dark: #a08230;
+  --color-accent-text: #7a6520;
+  --color-accent-glow: #f0e0a0;
+  --color-accent-pale: #d4c470;
+  --color-accent-border: #c4b060;
+
+  --color-surface: #eef5e9;
+  --color-surface-light: #f5faf2;
+  --color-surface-bright: #fbfdf9;
+  --color-surface-alt: #e5ede0;
+  --color-surface-mid: #dbe8d5;
+  --color-surface-warm: #d0e0c8;
+  --color-surface-card: #f0f7ed;
+  --color-surface-highlight: #e8f0e0;
+  --color-surface-placeholder: #d0dcc8;
+
+  --color-heading: #1a3a25;
+  --color-body: #2d4a35;
+  --color-muted: #4a6b52;
+  --color-light: #f0f8ec;
+  --color-warm: #7a9040;
+
+  --color-card-warm: #b8d4a0;
+  --color-card-warm-dark: #98c080;
+}
+
+/* ── Pink / Rose Gold Theme ── */
+.theme-pink {
+  --color-primary: #d4527a;
+  --color-primary-light: #e8709a;
+  --color-primary-dark: #b83d65;
+  --color-primary-deep: #9c2f53;
+  --color-primary-darker: #7d2443;
+
+  --color-accent: #d4a05d;
+  --color-accent-light: #f0d08a;
+  --color-accent-dark: #b08030;
+  --color-accent-text: #a06a18;
+  --color-accent-glow: #ffe4b0;
+  --color-accent-pale: #e8c070;
+  --color-accent-border: #d8b060;
+
+  --color-surface: #fdf2f5;
+  --color-surface-light: #fff8fa;
+  --color-surface-bright: #fffbfc;
+  --color-surface-alt: #f8e8ec;
+  --color-surface-mid: #f0dce2;
+  --color-surface-warm: #f5d0d8;
+  --color-surface-card: #fff0f4;
+  --color-surface-highlight: #fde8ee;
+  --color-surface-placeholder: #e8d0d5;
+
+  --color-heading: #5c2035;
+  --color-body: #6b3548;
+  --color-muted: #8a5a6b;
+  --color-light: #fff5f8;
+  --color-warm: #b86040;
+
+  --color-card-warm: #f0b8c8;
+  --color-card-warm-dark: #e8a0b0;
+}
