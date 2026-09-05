@@ -69,6 +69,7 @@ export const siteData = {
     subtitle:
       'गणरायाच्या आगमनाच्या या मंगल क्षणी आपण सर्वांनी उपस्थित राहून उत्सवाची शोभा वाढवावी.',
     members: [
+      { name: 'Siddharth Pandey', phone: '+91 9673085682', image: '' },
       { name: 'Raghuvansh K. Pandey', phone: '+91 9665168936', image: '' },
     ],
     closingMessage:
