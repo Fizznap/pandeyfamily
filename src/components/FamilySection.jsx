@@ -105,17 +105,27 @@ export default function FamilySection({ data, assets }) {
                     </div>
 
                     {/* Member Name */}
-                    <div className="p-4 md:p-5 flex items-center justify-center text-center">
+                    <div className="p-4 md:p-5 flex flex-col items-center justify-center text-center">
                       <span className="text-heading text-[1.45rem] md:text-[1.65rem] font-extrabold leading-snug tracking-tight font-heading">
                         {member.name}
                       </span>
+                      {member.phone && (
+                        <span className="text-light text-[1rem] md:text-[1.1rem] mt-2 font-body block opacity-90">
+                          {member.phone}
+                        </span>
+                      )}
                     </div>
                   </div>
                 ) : (
-                  <div className="p-4 flex items-center justify-center text-center">
+                  <div className="p-4 flex flex-col items-center justify-center text-center">
                     <span className="text-heading text-[1.8rem] md:text-[2.2rem] font-extrabold leading-snug tracking-tight font-heading text-shadow-soft">
                       {member.name}
                     </span>
+                    {member.phone && (
+                      <span className="text-light text-[1.1rem] md:text-[1.2rem] mt-2 font-body block opacity-90">
+                        {member.phone}
+                      </span>
+                    )}
                   </div>
                 )}
               </div>

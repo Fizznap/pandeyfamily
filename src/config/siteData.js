@@ -69,7 +69,7 @@ export const siteData = {
     subtitle:
       'गणरायाच्या आगमनाच्या या मंगल क्षणी आपण सर्वांनी उपस्थित राहून उत्सवाची शोभा वाढवावी.',
     members: [
-      { name: 'श्री. सिद्धार्थ पांडे', image: '' },
+      { name: 'Raghuvansh K. Pandey', phone: '+91 9665168936', image: '' },
     ],
     closingMessage:
       'गणरायाच्या आगमन सोहळ्यास आपली\nउपस्थिती आम्हांस आनंददायी ठरेल.',
@@ -100,7 +100,7 @@ export const siteData = {
     subtitle: 'गणरायाच्या आगमन सोहळ्यास\nआपले सहर्ष स्वागत आहे',
     placeName: 'पांडे निवास',
     address:
-      'फ्लॅट नं. १००१, १०वा मजला,\nबिल्डिंग नं. ७-सी, म्हाडा, यशवंत नगर,\nन्यू सातारा ऑफिस समोर, विरार (पश्चिम) - ४०१३०३',
+      'फ्लॅट नं. १००१, १०वा मजला,\nबिल्डिंग नं. ७-सी, म्हाडा, यशवंत नगर,\nन्यू सातारा ऑफिस समोर, विरार (पश्चिम) - ४०१३०३\n\nFlat No. 1001, 10th Floor,\nBuilding No. 7-C, MHADA, Yashwant Nagar,\nOpposite New Satara Office, Virar (West) - 401303',
     mapsLink: 'https://maps.app.goo.gl/WFBG1zWGPqYZnzNM8',
     mapsButtonText: 'Open Maps',
     mapEmbed:
